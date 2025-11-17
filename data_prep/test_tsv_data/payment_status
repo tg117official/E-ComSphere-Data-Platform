@@ -1,0 +1,5 @@
+payment_status_code	description
+PENDING	Payment initiated but not completed
+SUCCESS	Payment successful
+FAILED	Payment failed
+REFUNDED	Payment refunded

@@ -1,0 +1,5 @@
+refund_reason_code	description
+DAMAGED	Item received damaged
+SIZE_ISSUE	Size or fit issue
+CUSTOMER_CANCEL	Customer cancelled before shipping
+OTHER	Other reasons

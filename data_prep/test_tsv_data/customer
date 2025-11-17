@@ -1,0 +1,4 @@
+customer_id	first_name	last_name	email	phone_number	date_of_birth	gender	status_code	created_at	updated_at
+1	Rahul	Sharma	rahul.sharma@example.com	+91-9876543210	1990-05-15	M	ACTIVE	2025-11-01 11:00:00	2025-11-01 11:00:00
+2	Priya	Iyer	priya.iyer@example.com	+91-9876500000	1993-08-22	F	ACTIVE	2025-11-01 11:05:00	2025-11-01 11:05:00
+3	Amit	Patel	amit.patel@example.com	+91-9000000001		NULL	INACTIVE	2025-11-01 11:10:00	2025-11-01 11:10:00

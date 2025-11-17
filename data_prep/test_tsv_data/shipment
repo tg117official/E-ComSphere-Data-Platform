@@ -1,0 +1,3 @@
+shipment_id	order_id	warehouse_id	carrier_id	shipment_status_code	tracking_number	shipped_date	delivered_date	created_at	updated_at
+1	1	1	1	DELIVERED	BLD123456789IN	2025-11-06 09:00:00	2025-11-08 18:00:00	2025-11-06 08:00:00	2025-11-08 18:00:00
+2	2	2	2	IN_TRANSIT	DLV987654321IN	2025-11-07 10:00:00		2025-11-07 09:30:00	2025-11-07 10:00:00

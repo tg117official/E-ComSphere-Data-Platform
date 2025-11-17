@@ -1,0 +1,5 @@
+customer_address_id	customer_id	address_line1	address_line2	landmark	city	state	postal_code	country_code	address_type_code	is_default	created_at	updated_at
+1	1	Flat 101, Sunrise Apartments	Sector 5	Near City Mall	Mumbai	Maharashtra	400001	IN	HOME	1	2025-11-01 11:15:00	2025-11-01 11:15:00
+2	1	TechPark Tower B	4th Floor	Opp. Metro Station	Mumbai	Maharashtra	400002	IN	OFFICE	0	2025-11-01 11:16:00	2025-11-01 11:16:00
+3	2	Villa 23, Green Meadows		Near IT Park	Bengaluru	Karnataka	560001	IN	HOME	1	2025-11-01 11:20:00	2025-11-01 11:20:00
+4	3	Row House 9, Lake View		Near Central School	Pune	Maharashtra	411001	IN	HOME	1	2025-11-01 11:25:00	2025-11-01 11:25:00

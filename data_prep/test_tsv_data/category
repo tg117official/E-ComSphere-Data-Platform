@@ -1,0 +1,6 @@
+category_id	category_name	parent_category_id	category_level	created_at	updated_at
+1	Electronics		1	2025-11-01 09:00:00	2025-11-01 09:00:00
+2	Fashion		1	2025-11-01 09:05:00	2025-11-01 09:05:00
+3	Mobile Phones	1	2	2025-11-01 09:10:00	2025-11-01 09:10:00
+4	Laptops	1	2	2025-11-01 09:15:00	2025-11-01 09:15:00
+5	T-Shirts	2	2	2025-11-01 09:20:00	2025-11-01 09:20:00

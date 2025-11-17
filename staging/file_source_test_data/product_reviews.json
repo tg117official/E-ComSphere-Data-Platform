@@ -1,0 +1,57 @@
+[
+  {
+    "review_id": "R1001",
+    "product_id": "1",
+    "customer_id": "1",
+    "rating": 5,
+    "review_title": "Amazing phone at this price!",
+    "review_text": "Battery lasts almost 2 days. Camera quality is excellent. No heating issues.",
+    "review_date": "2025-11-08T09:30:00Z",
+    "helpful_votes": 12,
+    "source": "MOBILE_APP",
+    "status": "PUBLISHED",
+    "moderation_notes": null,
+    "metadata": {
+      "ip_address": "106.51.44.10",
+      "device": "Android",
+      "app_version": "4.2.1",
+      "locale": "en-IN"
+    }
+  },
+  {
+    "review_id": "R1002",
+    "product_id": "3",
+    "customer_id": "2",
+    "rating": 4,
+    "review_title": "Comfortable and perfect fit",
+    "review_text": "Good quality fabric. Fit is accurate and comfortable. Color is bright.",
+    "review_date": "2025-11-09T11:10:00Z",
+    "helpful_votes": 3,
+    "source": "WEB",
+    "status": "PUBLISHED",
+    "moderation_notes": null,
+    "metadata": {
+      "ip_address": "49.207.20.82",
+      "browser": "Chrome",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "review_id": "R1003",
+    "product_id": "2",
+    "customer_id": "2",
+    "rating": 3,
+    "review_title": "Good laptop but trackpad could be better",
+    "review_text": "Performance is great but the trackpad is slightly unresponsive sometimes.",
+    "review_date": "2025-11-07T14:45:00Z",
+    "helpful_votes": 1,
+    "source": "WEB",
+    "status": "PENDING",
+    "moderation_notes": "Check review for spam keywords",
+    "metadata": {
+      "ip_address": "157.45.12.4",
+      "browser": "Safari",
+      "os": "macOS"
+    }
+  }
+]

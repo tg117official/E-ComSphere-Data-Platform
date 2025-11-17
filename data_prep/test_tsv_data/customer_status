@@ -1,0 +1,4 @@
+status_code description
+ACTIVE  Active customer
+INACTIVE	Inactive customer
+BLOCKED Blocked due to fraud or abuse

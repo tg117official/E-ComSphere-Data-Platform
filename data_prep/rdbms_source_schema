@@ -1,0 +1,320 @@
+============================================================
+E-COMMERCE RDBMS DATA MODEL (3NF) – TEXT STYLE SCHEMA
+============================================================
+
+NOTE:
+- Types are logical (INT, STRING, DECIMAL, DATETIME, BOOL).
+- PK = Primary Key, FK = Foreign Key.
+- This matches the MySQL DDL shared earlier.
+
+------------------------------------------------------------
+1. LOOKUP / REFERENCE TABLES
+------------------------------------------------------------
+
+TABLE: customer_status
+    PK: status_code
+    Columns:
+        status_code      : STRING      -- e.g. 'ACTIVE', 'INACTIVE', 'BLOCKED'
+        description      : STRING
+
+TABLE: address_type
+    PK: address_type_code
+    Columns:
+        address_type_code: STRING      -- e.g. 'HOME', 'OFFICE'
+        description      : STRING
+
+TABLE: country
+    PK: country_code
+    Columns:
+        country_code     : STRING      -- ISO country code, e.g. 'IN', 'US'
+        country_name     : STRING
+
+TABLE: brand
+    PK: brand_id
+    Columns:
+        brand_id         : INT
+        brand_name       : STRING
+        description      : STRING (optional)
+        created_at       : DATETIME
+        updated_at       : DATETIME
+
+TABLE: category
+    PK: category_id
+    Columns:
+        category_id         : INT
+        category_name       : STRING
+        parent_category_id  : INT (FK → category.category_id, nullable)
+        category_level      : INT        -- 1=root, 2=subcategory, etc.
+        created_at          : DATETIME
+        updated_at          : DATETIME
+
+TABLE: currency
+    PK: currency_code
+    Columns:
+        currency_code    : STRING     -- 'INR', 'USD', etc.
+        currency_name    : STRING
+        symbol           : STRING     -- e.g. '₹', '$'
+
+TABLE: order_status
+    PK: order_status_code
+    Columns:
+        order_status_code: STRING     -- 'PENDING', 'PAID', 'SHIPPED', etc.
+        description      : STRING
+
+TABLE: order_channel
+    PK: order_channel_code
+    Columns:
+        order_channel_code: STRING    -- 'WEB', 'MOBILE', etc.
+        description       : STRING
+
+TABLE: payment_method
+    PK: payment_method_code
+    Columns:
+        payment_method_code: STRING   -- 'CARD', 'UPI', 'COD', etc.
+        description        : STRING
+
+TABLE: payment_status
+    PK: payment_status_code
+    Columns:
+        payment_status_code: STRING   -- 'PENDING', 'SUCCESS', 'FAILED', etc.
+        description         : STRING
+
+TABLE: refund_reason
+    PK: refund_reason_code
+    Columns:
+        refund_reason_code : STRING   -- 'DAMAGED', 'SIZE_ISSUE', etc.
+        description        : STRING
+
+TABLE: refund_status
+    PK: refund_status_code
+    Columns:
+        refund_status_code : STRING   -- 'REQUESTED', 'APPROVED', etc.
+        description        : STRING
+
+TABLE: carrier
+    PK: carrier_id
+    Columns:
+        carrier_id      : INT
+        carrier_name    : STRING
+        contact_phone   : STRING (optional)
+        website_url     : STRING (optional)
+
+TABLE: shipment_status
+    PK: shipment_status_code
+    Columns:
+        shipment_status_code: STRING  -- 'CREATED', 'IN_TRANSIT', 'DELIVERED', etc.
+        description         : STRING
+
+TABLE: promotion
+    PK: promotion_id
+    Columns:
+        promotion_id        : INT
+        promotion_code      : STRING   -- unique, e.g. 'NEWUSER50'
+        promotion_name      : STRING
+        discount_type       : STRING   -- 'PERCENT' or 'AMOUNT'
+        discount_value      : DECIMAL  -- numeric discount
+        start_date          : DATETIME
+        end_date            : DATETIME (nullable)
+        min_order_amount    : DECIMAL (nullable)
+        max_discount_amount : DECIMAL (nullable)
+        is_active           : BOOL
+
+------------------------------------------------------------
+2. CUSTOMER & IDENTITY TABLES
+------------------------------------------------------------
+
+TABLE: customer
+    PK: customer_id
+    Columns:
+        customer_id    : INT
+        first_name     : STRING
+        last_name      : STRING
+        email          : STRING (unique)
+        phone_number   : STRING (optional)
+        date_of_birth  : DATE   (optional)
+        gender         : STRING (optional)
+        status_code    : STRING  (FK → customer_status.status_code)
+        created_at     : DATETIME
+        updated_at     : DATETIME
+
+TABLE: customer_address
+    PK: customer_address_id
+    Columns:
+        customer_address_id: INT
+        customer_id        : INT    (FK → customer.customer_id)
+        address_line1      : STRING
+        address_line2      : STRING (optional)
+        landmark           : STRING (optional)
+        city               : STRING
+        state              : STRING
+        postal_code        : STRING
+        country_code       : STRING (FK → country.country_code)
+        address_type_code  : STRING (FK → address_type.address_type_code)
+        is_default         : BOOL
+        created_at         : DATETIME
+        updated_at         : DATETIME
+
+------------------------------------------------------------
+3. PRODUCT CORE TABLES
+------------------------------------------------------------
+
+TABLE: product
+    PK: product_id
+    Columns:
+        product_id          : INT
+        product_name        : STRING
+        brand_id            : INT    (FK → brand.brand_id)
+        default_category_id : INT    (FK → category.category_id)
+        short_description   : STRING (optional)
+        created_at          : DATETIME
+        updated_at          : DATETIME
+        is_active           : BOOL
+
+TABLE: product_variant
+    PK: product_variant_id
+    Columns:
+        product_variant_id  : INT
+        product_id          : INT    (FK → product.product_id)
+        sku                 : STRING (unique)
+        variant_name        : STRING   -- e.g. "Red / L"
+        created_at          : DATETIME
+        updated_at          : DATETIME
+        is_active           : BOOL
+
+------------------------------------------------------------
+4. WAREHOUSE & INVENTORY TABLES
+------------------------------------------------------------
+
+TABLE: warehouse
+    PK: warehouse_id
+    Columns:
+        warehouse_id    : INT
+        warehouse_name  : STRING
+        address_line1   : STRING
+        address_line2   : STRING (optional)
+        city            : STRING
+        state           : STRING
+        postal_code     : STRING
+        country_code    : STRING (FK → country.country_code)
+        created_at      : DATETIME
+        updated_at      : DATETIME
+
+TABLE: inventory_level
+    PK: (warehouse_id, product_variant_id)
+    Columns:
+        warehouse_id       : INT    (FK → warehouse.warehouse_id)
+        product_variant_id : INT    (FK → product_variant.product_variant_id)
+        on_hand_qty        : INT
+        reserved_qty       : INT
+        last_updated_at    : DATETIME
+
+------------------------------------------------------------
+5. ORDER & ORDER ITEM TABLES
+------------------------------------------------------------
+
+TABLE: orders
+    PK: order_id
+    Columns:
+        order_id             : INT
+        customer_id          : INT      (FK → customer.customer_id)
+        order_date           : DATETIME
+        order_status_code    : STRING   (FK → order_status.order_status_code)
+        order_channel_code   : STRING   (FK → order_channel.order_channel_code)
+        currency_code        : STRING   (FK → currency.currency_code)
+        billing_address_id   : INT      (FK → customer_address.customer_address_id)
+        shipping_address_id  : INT      (FK → customer_address.customer_address_id)
+        total_item_amount    : DECIMAL  -- sum of base prices
+        total_discount_amount: DECIMAL
+        total_tax_amount     : DECIMAL
+        total_shipping_amount: DECIMAL
+        grand_total_amount   : DECIMAL  -- final amount
+        created_at           : DATETIME
+        updated_at           : DATETIME
+
+TABLE: order_item
+    PK: order_item_id
+    Columns:
+        order_item_id      : INT
+        order_id           : INT      (FK → orders.order_id)
+        product_variant_id : INT      (FK → product_variant.product_variant_id)
+        quantity           : INT
+        base_unit_price    : DECIMAL  -- price per unit before discounts/tax
+        discount_amount    : DECIMAL  -- discount for this line
+        tax_amount         : DECIMAL
+        shipping_amount    : DECIMAL
+        line_total_amount  : DECIMAL  -- final line amount
+        created_at         : DATETIME
+        updated_at         : DATETIME
+
+------------------------------------------------------------
+6. SHIPMENT TABLES
+------------------------------------------------------------
+
+TABLE: shipment
+    PK: shipment_id
+    Columns:
+        shipment_id          : INT
+        order_id             : INT      (FK → orders.order_id)
+        warehouse_id         : INT      (FK → warehouse.warehouse_id)
+        carrier_id           : INT      (FK → carrier.carrier_id)
+        shipment_status_code : STRING   (FK → shipment_status.shipment_status_code)
+        tracking_number      : STRING   (optional)
+        shipped_date         : DATETIME (optional)
+        delivered_date       : DATETIME (optional)
+        created_at           : DATETIME
+        updated_at           : DATETIME
+
+TABLE: shipment_item
+    PK: (shipment_id, order_item_id)
+    Columns:
+        shipment_id      : INT    (FK → shipment.shipment_id)
+        order_item_id    : INT    (FK → order_item.order_item_id)
+        shipped_quantity : INT
+
+------------------------------------------------------------
+7. PAYMENT & REFUND TABLES
+------------------------------------------------------------
+
+TABLE: payment
+    PK: payment_id
+    Columns:
+        payment_id          : INT
+        order_id            : INT      (FK → orders.order_id)
+        payment_method_code : STRING   (FK → payment_method.payment_method_code)
+        payment_status_code : STRING   (FK → payment_status.payment_status_code)
+        amount              : DECIMAL
+        currency_code       : STRING   (FK → currency.currency_code)
+        transaction_reference: STRING  (optional, gateway txn id)
+        payment_date        : DATETIME
+        created_at          : DATETIME
+        updated_at          : DATETIME
+
+TABLE: refund
+    PK: refund_id
+    Columns:
+        refund_id           : INT
+        payment_id          : INT      (FK → payment.payment_id)
+        order_id            : INT      (FK → orders.order_id)
+        refund_amount       : DECIMAL
+        currency_code       : STRING   (FK → currency.currency_code)
+        refund_reason_code  : STRING   (FK → refund_reason.refund_reason_code)
+        refund_status_code  : STRING   (FK → refund_status.refund_status_code)
+        refund_date         : DATETIME
+        created_at          : DATETIME
+        updated_at          : DATETIME
+
+------------------------------------------------------------
+8. ORDER–PROMOTION RELATION
+------------------------------------------------------------
+
+TABLE: order_promotion
+    PK: order_promotion_id
+    Columns:
+        order_promotion_id    : INT
+        order_id              : INT    (FK → orders.order_id)
+        promotion_id          : INT    (FK → promotion.promotion_id)
+        discount_amount_applied: DECIMAL
+
+------------------------------------------------------------
+END OF RDBMS TEXT-STYLE SCHEMA
+------------------------------------------------------------

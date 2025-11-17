@@ -1,0 +1,6 @@
+order_status_code	description
+PENDING	Order created, awaiting payment
+PAID	Payment completed
+SHIPPED	Order shipped to customer
+DELIVERED	Order delivered to customer
+CANCELLED	Order cancelled

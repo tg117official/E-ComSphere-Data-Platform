@@ -1,0 +1,4 @@
+order_id	customer_id	order_date	order_status_code	order_channel_code	currency_code	billing_address_id	shipping_address_id	total_item_amount	total_discount_amount	total_tax_amount	total_shipping_amount	grand_total_amount	created_at	updated_at
+1	1	2025-11-05 10:00:00	DELIVERED	WEB	INR	1	1	16000.00	1100.00	1980.00	150.00	17030.00	2025-11-05 10:00:00	2025-11-08 18:00:00
+2	2	2025-11-06 11:30:00	PAID	MOBILE	INR	3	3	60000.00	500.00	7200.00	200.00	66500.00	2025-11-06 11:30:00	2025-11-07 09:00:00
+3	3	2025-11-07 09:15:00	CANCELLED	WEB	INR	4	4	15000.00	0.00	1800.00	100.00	16900.00	2025-11-07 09:15:00	2025-11-07 10:00:00

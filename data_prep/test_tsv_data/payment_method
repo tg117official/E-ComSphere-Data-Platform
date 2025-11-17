@@ -1,0 +1,5 @@
+payment_method_code	description
+CARD	Credit or debit card
+UPI	UPI payment
+COD	Cash on Delivery
+NB	Net banking

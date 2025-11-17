@@ -1,0 +1,21 @@
+ProductAttributesRecord:
+    product_id: string
+    category_code: string
+    source_system: string
+    effective_from: datetime
+    effective_to: datetime? (nullable)
+    attributes: { <string-key>: <any simple value or array> }
+
+ProductReviewRecord:
+    review_id: string
+    product_id: string
+    customer_id: string
+    rating: int (1..5)
+    review_title: string?
+    review_text: string
+    review_date: datetime
+    helpful_votes: int?
+    source: string
+    status: string
+    moderation_notes: string?
+    metadata: { <string-key>: <any simple / nested value> }?

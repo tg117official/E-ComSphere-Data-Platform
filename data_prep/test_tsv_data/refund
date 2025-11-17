@@ -1,0 +1,2 @@
+refund_id	payment_id	order_id	refund_amount	currency_code	refund_reason_code	refund_status_code	refund_date	created_at	updated_at
+1	3	2	1500.00	INR	DAMAGED	PROCESSED	2025-11-10 15:00:00	2025-11-10 15:00:00	2025-11-10 15:00:00

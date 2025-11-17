@@ -1,0 +1,49 @@
+# config.yaml
+
+environments:
+  dev:
+    file_source:
+      base_dir: "staging/file_source_test_data"
+      product_attributes: "product_attributes.json"
+      product_reviews: "product_reviews.json"
+
+    rdbms_source:
+      base_dir: "staging/rdbms_source_test_data"
+      parquet_suffix: "_parquet"
+
+    silver_output:
+      format: "parquet"
+      write_mode: "overwrite"
+      local_base_path: "staging/output/silver"
+
+    gold_output:
+      format: "parquet"
+      write_mode: "overwrite"
+      local_base_path: "staging/output/gold"
+
+  prod:
+    file_source:
+      base_dir: "s3://my-prod-ecom-bucket/raw/file_source"
+      product_attributes: "product_attributes"
+      product_reviews: "product_reviews"
+
+    rdbms_source:
+      base_dir: "s3://my-prod-ecom-bucket/raw/rdbms"
+      parquet_suffix: "_parquet"
+
+    silver_output:
+      format: "parquet"
+      write_mode: "overwrite"
+      s3_base_path: "s3://my-prod-ecom-bucket/silver"
+      glue_catalog_db: "ecom_silver_db"
+      table_prefix: "ecom_"
+
+    gold_output:
+      format: "parquet"          # data format Spark will use to push data
+      write_mode: "overwrite"    # in real prod you may use "append"
+      redshift:
+        jdbc_url: "jdbc:redshift://your-cluster-endpoint:5439/yourdb"
+        user: "your_user"        # in real life: use secrets manager / env vars
+        password: "your_password"
+        schema: "ecom_gold"
+        table_prefix: "gold_"

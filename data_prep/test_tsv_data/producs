@@ -1,0 +1,4 @@
+product_id	product_name	brand_id	default_category_id	short_description	created_at	updated_at	is_active
+1	TechNova X1 Smartphone	1	3	6.5 inch display, 8GB RAM, 128GB storage, 5000mAh battery	2025-11-01 12:00:00	2025-11-01 12:00:00	1
+2	WorkPro Ultra 14" Laptop	3	4	14 inch FHD, 16GB RAM, 512GB SSD, Intel i7	2025-11-01 12:05:00	2025-11-01 12:05:00	1
+3	UrbanWear Classic T-Shirt	2	5	100% cotton, regular fit, unisex	2025-11-01 12:10:00	2025-11-01 12:10:00	1

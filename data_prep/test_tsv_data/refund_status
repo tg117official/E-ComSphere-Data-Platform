@@ -1,0 +1,5 @@
+refund_status_code	description
+REQUESTED	Refund requested by customer
+APPROVED	Refund approved
+REJECTED	Refund rejected
+PROCESSED	Refund processed and paid

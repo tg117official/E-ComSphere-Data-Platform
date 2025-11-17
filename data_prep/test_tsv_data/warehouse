@@ -1,0 +1,3 @@
+warehouse_id	warehouse_name	address_line1	address_line2	city	state	postal_code	country_code	created_at	updated_at
+1	Mumbai Fulfilment Center	Plot 12, Industrial Area		Mumbai	Maharashtra	400070	IN	2025-11-01 13:00:00	2025-11-01 13:00:00
+2	Delhi Fulfilment Center	Warehouse 8, Logistics Park		New Delhi	Delhi	110020	IN	2025-11-01 13:05:00	2025-11-01 13:05:00

@@ -1,0 +1,75 @@
+[
+  {
+    "product_id": "1",
+    "category_code": "MOBILE",
+    "source_system": "CATALOG_SERVICE",
+    "effective_from": "2025-10-01T00:00:00Z",
+    "effective_to": null,
+    "attributes": {
+      "brand": "TechNova",
+      "model": "X1",
+      "color_options": ["Black", "Blue"],
+      "ram_gb": 8,
+      "storage_gb": 128,
+      "battery_mah": 5000,
+      "screen_size_inch": 6.5,
+      "os": "Android 14",
+      "camera_mp": {
+        "rear": 64,
+        "front": 16
+      },
+      "warranty_months": 12,
+      "box_contents": [
+        "Handset",
+        "Type-C Cable",
+        "User Manual",
+        "SIM Tool"
+      ]
+    }
+  },
+  {
+    "product_id": "2",
+    "category_code": "LAPTOP",
+    "source_system": "CATALOG_SERVICE",
+    "effective_from": "2025-08-15T00:00:00Z",
+    "effective_to": null,
+    "attributes": {
+      "brand": "WorkPro",
+      "model": "Ultra 14",
+      "processor": "Intel Core i7 13th Gen",
+      "ram_gb": 16,
+      "ssd_gb": 512,
+      "screen_size_inch": 14.0,
+      "weight_kg": 1.28,
+      "graphics": "Intel Iris Xe",
+      "battery_backup_hours": 10,
+      "keyboard_backlight": true,
+      "ports": [
+        "USB-C Thunderbolt",
+        "HDMI",
+        "USB 3.2",
+        "Audio Jack"
+      ]
+    }
+  },
+  {
+    "product_id": "3",
+    "category_code": "TSHIRT",
+    "source_system": "CATALOG_SERVICE",
+    "effective_from": "2025-09-10T00:00:00Z",
+    "effective_to": null,
+    "attributes": {
+      "brand": "UrbanWear",
+      "fabric": "100% Cotton",
+      "fit": "Regular",
+      "wash_care": ["Machine Wash", "Do Not Bleach"],
+      "color": "White",
+      "size_chart": {
+        "M": {"chest_cm": 96, "length_cm": 70},
+        "L": {"chest_cm": 102, "length_cm": 72}
+      },
+      "pattern": "Solid",
+      "gender": "Unisex"
+    }
+  }
+]

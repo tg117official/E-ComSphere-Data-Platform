@@ -1,0 +1,5 @@
+shipment_status_code	description
+CREATED	Shipment created, waiting pickup
+IN_TRANSIT	Shipment in transit
+DELIVERED	Shipment delivered
+RETURNED	Shipment returned to warehouse
