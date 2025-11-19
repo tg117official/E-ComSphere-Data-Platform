@@ -1,0 +1,15 @@
+spark-submit \
+  --packages org.apache.hudi:hudi-spark3.5-bundle_2.12:0.15.0 \
+  --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
+  insert.py
+
+
+spark-submit \
+  --packages org.apache.hudi:hudi-spark3.5-bundle_2.12:0.15.0 \
+  --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
+  upsert.py
+
+
+pyspark \
+  --packages org.apache.hudi:hudi-spark3.5-bundle_2.12:0.15.0 \
+  --conf spark.serializer=org.apache.spark.serializer.KryoSerializer
